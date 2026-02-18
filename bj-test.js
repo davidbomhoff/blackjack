@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     let introStep = 0;
     let introActive = true;
-
+    const standButton = document.getElementById("stand");
+    const hitButton = document.getElementById("hit");
+    const playAgainButton = document.getElementById("play-again");
+    
+    playAgainButton.style.display = "none";
     const introScript = [
         {
             text: "Blackjack is one of the most popular card games in the world.The goal is to beat the dealer without exceeding 21 points..",
@@ -291,11 +295,8 @@ document.getElementById("start-game").addEventListener("click", () => {
         standButton.disabled = true;
         playAgainButton.style.display = "inline-block";
     }
-    const playAgainButton = document.getElementById("play-again");
-    playAgainButton.style.display = "none";
 
-    
-    const hitButton = document.getElementById("hit");
+
 
     hitButton.addEventListener("click", function() {
 
@@ -329,8 +330,6 @@ document.getElementById("start-game").addEventListener("click", () => {
     playAgainButton.style.display = "none";
 
     });
-
-    const standButton = document.getElementById("stand");
 
     standButton.addEventListener("click", async function() {
         if (gameOver) return;
