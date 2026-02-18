@@ -99,7 +99,7 @@ document.getElementById("start-game").addEventListener("click", () => {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    function startGame() {
+    async function startGame() {
         document.getElementById("dealer-cards").innerHTML = "";
         document.getElementById("dealer-score").textContent = "";
         document.getElementById("dealer-avatar").src = "dealer-idle.svg";
@@ -136,7 +136,7 @@ document.getElementById("start-game").addEventListener("click", () => {
 
         const playerScore = calculateScore(playerHand);
         if (playerScore === 21) {
-        dealerTurn()
+        await dealerTurn()
     }
 
 
@@ -221,7 +221,7 @@ document.getElementById("start-game").addEventListener("click", () => {
         // Reveal hidden card
         const hiddenDiv = document.getElementById("hidden-card");
         hiddenDiv.style.backgroundImage =
-         `url("cards/${dealerHand[1].value}-${dealerHand[1].suit}.svg")`;
+         `url("cards/${dealerHand[dealerHand.length - 1].value}-${dealerHand[dealerHand.length - 1].suit}.svg")`;
 
         hiddenDiv.style.backgroundSize = "cover";
         hiddenDiv.textContent = "";
@@ -345,11 +345,6 @@ document.getElementById("start-game").addEventListener("click", () => {
         playAgainButton.style.display = "inline-block";
         });
     
-    if gameover === true {
-                hitButton.disabled = true;
-                standButton.disabled = true;
-                playAgainButton.style.display = "inline-block";
-    }
 
 showIntroStep();
 });
