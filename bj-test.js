@@ -272,6 +272,9 @@ document.getElementById("start-game").addEventListener("click", () => {
         }
 
         gameOver = true;
+        hitButton.disabled = true;
+        standButton.disabled = true;
+        playAgainButton.style.display = "inline-block";
     }
     const playAgainButton = document.getElementById("play-again");
     playAgainButton.style.display = "none";
