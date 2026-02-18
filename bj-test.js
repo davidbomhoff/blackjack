@@ -317,6 +317,9 @@ document.getElementById("start-game").addEventListener("click", () => {
         standButton.disabled = true;
         playAgainButton.style.display = "inline-block";
     }
+        if (score === 21){
+            dealerTurn()
+        }
     });
 
     playAgainButton.addEventListener("click", function() {
