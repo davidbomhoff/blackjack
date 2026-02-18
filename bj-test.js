@@ -299,7 +299,11 @@ document.getElementById("start-game").addEventListener("click", () => {
 
     hitButton.addEventListener("click", function() {
 
-    if(gameOver) return;
+    if(gameOver) {
+        hitButton.disabled = true;
+        standButton.disabled = true;
+        playAgainButton.style.display = "inline-block";
+    };
 
     dealCard(playerHand, "player-cards");
 
