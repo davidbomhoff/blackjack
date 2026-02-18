@@ -299,11 +299,7 @@ document.getElementById("start-game").addEventListener("click", () => {
 
     hitButton.addEventListener("click", function() {
 
-    if(gameOver) {
-        hitButton.disabled = true;
-        standButton.disabled = true;
-        playAgainButton.style.display = "inline-block";
-    };
+    if(gameOver) return;
 
     dealCard(playerHand, "player-cards");
 
@@ -345,6 +341,12 @@ document.getElementById("start-game").addEventListener("click", () => {
 
         playAgainButton.style.display = "inline-block";
         });
+    
+    if gameover === true {
+                hitButton.disabled = true;
+                standButton.disabled = true;
+                playAgainButton.style.display = "inline-block";
+    }
 
 showIntroStep();
 });
