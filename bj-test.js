@@ -246,17 +246,26 @@ document.getElementById("start-game").addEventListener("click", () => {
         if (dealerScore > 21) {
             setMessage("Dealer busts! You win!");
             document.getElementById("dealer-avatar").src = "dealer-lose.svg";
+            hitButton.disabled = true;
+            standButton.disabled = true;
+            playAgainButton.style.display = "inline-block";
 
         } 
         
         else if (playerScore > dealerScore) {
             if (playerScore === 21 && playerHand.length === 2) {
                 setMessage("Blackjack! You win!");
+                hitButton.disabled = true;
+                standButton.disabled = true;
+                playAgainButton.style.display = "inline-block";
             }
             
             else{
             setMessage(playerScore + " beats " + dealerScore + ", You win!");
             document.getElementById("dealer-avatar").src = "dealer-lose.svg";
+            hitButton.disabled = true;
+            standButton.disabled = true;
+            playAgainButton.style.display = "inline-block";
             }
 
         } 
@@ -264,11 +273,17 @@ document.getElementById("start-game").addEventListener("click", () => {
         else if (dealerScore > playerScore) {
             setMessage(dealerScore + " beats " + playerScore + ", Dealer wins!");
             document.getElementById("dealer-avatar").src = "dealer-win.svg";
+                            hitButton.disabled = true;
+                standButton.disabled = true;
+                playAgainButton.style.display = "inline-block";
 
         } 
         
         else {
-            setMessage("Push!");
+            setMessage("Push!");                
+            hitButton.disabled = true;
+            standButton.disabled = true;
+            playAgainButton.style.display = "inline-block";
         }
 
         gameOver = true;
