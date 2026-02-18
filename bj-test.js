@@ -290,9 +290,6 @@ document.getElementById("start-game").addEventListener("click", () => {
     document.getElementById("player-score").textContent =
         "Score: " + score;
 
-        if (score === 21) {
-            dealerTurn();
-        }
 
         if (score > 21) {
         setMessage("Bust! You lose.");
