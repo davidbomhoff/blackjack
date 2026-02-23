@@ -89,7 +89,7 @@ main p {
 #dealer-section{
     margin-top: 30px;
     margin-bottom: 20px;
-    position: center;
+    position: absolute;
     align-items: center;
     justify-content: center;
 }
@@ -98,7 +98,7 @@ main p {
     width: 179px;
     align-items: center;
     justify-content: center;
-    position: center;
+    position: absolute;
 }
 
 #dealer-cards,
