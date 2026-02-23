@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 header {
@@ -98,7 +97,7 @@ main p {
     width: 179px;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: center;
 }
 
 #dealer-cards,
