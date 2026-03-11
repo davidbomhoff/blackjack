@@ -4,109 +4,89 @@
     box-sizing: border-box;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+:root {
+    --noir-black:      #111111;
+    --noir-felt:       #181818;
+    --noir-crimson:    #8b0000;
+    --noir-crimson-lt: #c0392b;
+    --noir-silver:     #c0c0c0;
+    --noir-cream:      #f5f0e8;
+    --noir-dim:        #6b6b6b;
+    --font-serif:      'Cinzel', Georgia, serif;
+    --font-mono:       monospace;
 }
 
-header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-header p {
-    font-size: 1rem;
-    opacity: 0.9;
-    text-align: center;
-}
-
-main {
-    border: 3px solid red;
-    padding: 2rem;
-    margin: 2rem;
-    position: relative;
-    box-shadow: inset 0 0 0 8px white, inset 0 0 0 11px red;
-    background-color: #333;
+body {
+    font-family: var(--font-serif);
+    background-color: var(--noir-black);
+    background-image: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 100%);
+    color: var(--noir-cream);
+    min-height: 100vh;
+    display: flex;
     justify-content: center;
-}
-
-
-main p {
-    font-size: 10;
-    line-height: 1.5;
-    text-align: center;
-    color: #cbd5e1;
-    
-}
-
-
-/* make panels stack on top of each other; container height is handled by JS */
-#steps {
-  position: center;
-  max-width: 600px;
-  margin: 0 auto;
-  transition: height .32s ease;
-  height: auto + 100; /* JS will set explicit height on load */
-  overflow: hidden;
-  display: block;
-}
-
-/* panels centered within the container and overlapping each other */
-#steps > div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(520px, 100%);
-  transform: translate(-50%, -50%) translateY(8px) scale(.99);
-  background: #333;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
-  opacity: 0;
-  transition: transform .45s cubic-bezier(.2,.9,.2,1), opacity .45s ease;
-  pointer-events: none;
-  will-change: transform, opacity;
-  margin: 0 auto;
-}
-
-#table {
-    width: 800px;
-    margin: 0 auto;
-    text-align: center;
     align-items: center;
-    justify-content: center;
 }
 
-#game-message {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 15px 0;
-    min-height: 24px;
+.table {
+    background-color: var(--noir-felt);
+    background-image: radial-gradient(ellipse at center, #242424 0%, #111111 80%);
+    border: 2px solid #2a2a2a;
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(0, 0, 0, 0.6);
+    padding: 30px 40px;
+    max-width: 860px;
+    width: 100%;
+    text-align: center;
 }
 
-#dealer-section{
+#dealer-section {
     margin-top: 30px;
     margin-bottom: 20px;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(255, 230, 150, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    padding: 20px;
 }
 
 #dealer-avatar {
     width: 179px;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
+}
+
+#game-message {
+    min-height: 80px;
+    padding: 15px;
+    margin: 20px auto;
+    width: 400px;
+
+    background: #0d0d0d;
+    color: var(--noir-silver);
+
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.6;
+
+    border-radius: 6px;
+    border: 2px solid var(--noir-crimson);
+
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.message-line {
+    margin-bottom: 6px;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
 }
 
 #dealer-cards,
 #player-cards {
     display: flex;
-    gap: 8px;              /* space between cards */
-    justify-content: center;
     gap: 8px;
+    justify-content: center;
     margin: 10px 0;
     overflow-x: auto;
 }
@@ -123,17 +103,107 @@ main p {
     padding: 6px;
     box-sizing: border-box;
     background-color: white;
-    background-size: contain;
+    background-size: 100% 100%;
     background-position: center;
 }
 
+.controls {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 28px;
+    border-radius: 4px;
+    background-color: var(--noir-crimson);
+    color: var(--noir-silver);
+    border: 1px solid var(--noir-dim);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--noir-crimson-lt);
+    border-color: var(--noir-silver);
+    color: var(--noir-cream);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+button:disabled {
+    background-color: #2a0a0a;
+    border-color: #3a1a1a;
+    color: var(--noir-dim);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#intro-controls {
+    margin-top: 12px;
+}
+
+#player-score,
+#dealer-score {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--noir-silver);
+    text-align: center;
+    margin: 6px 0;
+}
+
+#message {
+    font-family: var(--font-serif);
+    color: var(--noir-cream);
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    margin-top: 10px;
+}
+
+/* make panels stack on top of each other; container height is handled by JS */
+#steps {
+  position: center;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: height .32s ease;
+  overflow: hidden;
+  display: block;
+}
+
+#steps > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(520px, 100%);
+  transform: translate(-50%, -50%) translateY(8px) scale(.99);
+  background: var(--noir-felt);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+  opacity: 0;
+  transition: transform .45s cubic-bezier(.2,.9,.2,1), opacity .45s ease;
+  pointer-events: none;
+  will-change: transform, opacity;
+  margin: 0 auto;
+}
 
 #steps > div.visible {
   opacity: 1;
   transform: translate(-50%, -50%) translateY(0) scale(1);
   pointer-events: auto;
   z-index: 1;
-  background-color: #333;
+  background-color: var(--noir-felt);
   cursor: pointer;
 }
 
@@ -141,7 +211,6 @@ main p {
   z-index: 0;
 }
 
-/* pop animation accent (keeps element centered while animating) */
 @keyframes pop-in {
   0%   { transform: translate(-50%, -50%) scale(.92) translateY(8px); opacity:0; }
   60%  { transform: translate(-50%, -50%) scale(1.03) translateY(0); opacity:1; }
@@ -149,99 +218,6 @@ main p {
 }
 #steps > div.pop { animation: pop-in .45s cubic-bezier(.2,1.05,.3,1) both; }
 
-.controls { 
-    text-align: center; 
-    margin-top: 20px; 
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-button {
-    font-family: Helvetica;
-    padding: 10px 25px;
-    border-radius: 8px;
-    background: #0d640a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-#nextBtn { padding:.6rem 1rem; border-radius:8px; background:#0d640a; color:#fff; border:none; cursor:pointer; font-weight:600; }
-#nextBtn:disabled { background:#cbd5e1; cursor:default; color:#475569; }
-
-/* respects user motion preferences */
 @media (prefers-reduced-motion: reduce) {
   #steps > div, #steps > div.pop { transition:none; animation:none; transform:translate(-50%, -50%); opacity:1; }
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #333;
-    color: #cbd5e1;
-    min-height: 100vh;
-    display: flex;
-    position: center;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    left: 50%;
-}
-
-#game-message {
-    min-height: 80px;
-    padding: 15px;
-    margin: 20px auto;
-    width: 400px;
-    
-    background: #111;
-    color: #00ffcc;
-
-    font-family: monospace;
-    font-size: 14px;
-
-    border-radius: 10px;
-    border: 2px solid #0d640a;
-
-    box-shadow: 0 0 10px rgba(0,255,200,0.4);
-}
-
-.message-line {
-    margin-bottom: 6px;
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }    
-}
-
-table {
-    width: 100%;
-    display: flex;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    position: absolute;
-}
-
-button:hover{
-    background-color: #073d05;
-    transform: scale(1.1);
-}
-
-button:disabled {
-    background-color: #5f925a;
-    cursor: not-allowed;
-    color: #475569;
-}
-
-#player-score, #dealer-score {
-    font-size: 18px;
-    font-weight: bold;
-    color: #2ed175;
-    justify-content: center;
-    position: relative;
-    align-items: center;
 }
