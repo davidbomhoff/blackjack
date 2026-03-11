@@ -154,7 +154,7 @@ document.getElementById("start-game").addEventListener("click", () => {
         cardDiv.classList.add("card");
         cardDiv.style.backgroundImage = 
             `url("cards/${card.value}-${card.suit}.svg")`;
-        cardDiv.style.backgroundSize = "cover";
+        cardDiv.style.backgroundSize = "100% 100%";
         cardDiv.style.backgroundRepeat = "no-repeat";
         
 
@@ -227,7 +227,7 @@ document.getElementById("start-game").addEventListener("click", () => {
         hiddenDiv.style.backgroundImage =
          `url("cards/${dealerHand[dealerHand.length - 1].value}-${dealerHand[dealerHand.length - 1].suit}.svg")`;
 
-        hiddenDiv.style.backgroundSize = "cover";
+        hiddenDiv.style.backgroundSize = "100% 100%";
         hiddenDiv.textContent = "";
 
         while (dealerScore < 17) {
